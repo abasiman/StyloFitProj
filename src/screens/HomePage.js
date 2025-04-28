@@ -50,7 +50,7 @@ export default function HomePage({ navigation }) {
       </ScrollView>
 
       {/* Bottom Navbar */}
-      <View style={styles.navbar}>
+      {/* <View style={styles.navbar}>
         <Pressable style={styles.navItem} onPress={() => handleTabPress('Home')}>
           <FontAwesome name="home" size={24} color={getIconColor('Home')} />
           <Text style={[styles.navText, { color: getIconColor('Home') }]}>Home</Text>
@@ -75,7 +75,7 @@ export default function HomePage({ navigation }) {
           <FontAwesome name="user" size={24} color={getIconColor('User')} />
           <Text style={[styles.navText, { color: getIconColor('User') }]}>User</Text>
         </Pressable>
-      </View>
+      </View> */}
     </View>
   );
 }
