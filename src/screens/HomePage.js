@@ -1,10 +1,19 @@
 // src/screens/HomePage.js
-import React from 'react';
-import { View, Text, StyleSheet, Image, Pressable, ScrollView } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function HomePage({ navigation }) {
+  const [activeTab, setActiveTab] = useState('Home');
+
+  const handleTabPress = (tabName) => {
+    setActiveTab(tabName);
+    // Example navigation (You can replace this with your actual screens)
+    navigation.navigate('UsersScreen');
+  };
+
+  const getIconColor = (tabName) => (activeTab === tabName ? 'black' : 'grey');
+
   return (
     <View style={styles.container}>
       {/* Top Header */}
@@ -14,32 +23,7 @@ export default function HomePage({ navigation }) {
       </View>
 
       <ScrollView contentContainerStyle={styles.feed}>
-        {/* Post Card */}
-        {/* <View style={styles.card}>
-          <View style={styles.cardHeader}>
-            <View style={styles.profilePic} />
-            <Text style={styles.username}>@drake</Text>
-            <MaterialCommunityIcons name="dots-horizontal" size={24} color="black" style={styles.moreIcon} />
-          </View>
-
-          <View style={styles.outfitContainer}>
-            <Pressable style={styles.tag}><Text style={styles.tagText}>(no brand)</Text></Pressable>
-            <Text style={styles.outfitText}>Outfit{"\n"}Picture</Text>
-            <Pressable style={[styles.tag, styles.bottomTag]}><Text style={styles.tagText}>gucci</Text></Pressable>
-          </View>
-
-          <View style={styles.actions}>
-            <FontAwesome name="heart" size={20} color="black" />
-            <Text style={styles.actionText}>11.7k</Text>
-            <FontAwesome name="comment" size={20} color="black" style={styles.commentIcon} />
-            <Text style={styles.actionText}>11.7k</Text>
-            <FontAwesome name="bookmark" size={20} color="black" style={styles.bookmarkIcon} />
-          </View>
-
-          <Text style={styles.caption}>caption bla bla bla... <Text style={styles.moreText}>more</Text></Text>
-        </View> */}
-
-        {/* Copy of Post Card */}
+        {/* Example Feed */}
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <View style={styles.profilePic} />
@@ -67,30 +51,35 @@ export default function HomePage({ navigation }) {
 
       {/* Bottom Navbar */}
       <View style={styles.navbar}>
-        <Pressable style={styles.navItem}>
-          <FontAwesome name="home" size={24} color="black" />
-          <Text style={styles.navText}>Home</Text>
+        <Pressable style={styles.navItem} onPress={() => handleTabPress('Home')}>
+          <FontAwesome name="home" size={24} color={getIconColor('Home')} />
+          <Text style={[styles.navText, { color: getIconColor('Home') }]}>Home</Text>
         </Pressable>
-        <Pressable style={styles.navItem}>
-          <FontAwesome name="search" size={24} color="black" />
-          <Text style={styles.navText}>Search</Text>
+
+        <Pressable style={styles.navItem} onPress={() => handleTabPress('Search')}>
+          <FontAwesome name="search" size={24} color={getIconColor('Search')} />
+          <Text style={[styles.navText, { color: getIconColor('Search') }]}>Search</Text>
         </Pressable>
-        <Pressable style={styles.navItem}>
-          <FontAwesome name="plus-circle" size={24} color="black" />
-          <Text style={styles.navText}>Upload</Text>
+
+        <Pressable style={styles.navItem} onPress={() => handleTabPress('Upload')}>
+          <FontAwesome name="plus-circle" size={24} color={getIconColor('Upload')} />
+          <Text style={[styles.navText, { color: getIconColor('Upload') }]}>Upload</Text>
         </Pressable>
-        <Pressable style={styles.navItem}>
-          <FontAwesome name="map-marker" size={24} color="black" />
-          <Text style={styles.navText}>Map</Text>
+
+        <Pressable style={styles.navItem} onPress={() => handleTabPress('Map')}>
+          <FontAwesome name="map-marker" size={24} color={getIconColor('Map')} />
+          <Text style={[styles.navText, { color: getIconColor('Map') }]}>Map</Text>
         </Pressable>
-        <Pressable style={styles.navItem}>
-          <FontAwesome name="user" size={24} color="black" />
-          <Text style={styles.navText}>User</Text>
+
+        <Pressable style={styles.navItem} onPress={() => handleTabPress('User')}>
+          <FontAwesome name="user" size={24} color={getIconColor('User')} />
+          <Text style={[styles.navText, { color: getIconColor('User') }]}>User</Text>
         </Pressable>
       </View>
     </View>
   );
 }
+
 
 const COLORS = {
   primary: '#83715D',
