@@ -42,7 +42,7 @@ export default function LoginScreen({ navigation }) {
         <Text style={styles.link}>Change Password</Text>
       </TouchableOpacity>
 
-      <Pressable style={styles.button} onPress={() => {/* TODO: login */}}>
+      <Pressable style={styles.button}onPress={() => navigation.navigate('HomePage')}>
         <Text style={styles.buttonText}>Login</Text>
       </Pressable>
 
