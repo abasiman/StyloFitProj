@@ -17,6 +17,7 @@ import Settings from './src/screens/Settings';
 import MyAccount from './src/screens/MyAccount'; // Adjust the path if necessary
 import NotifSettings from './src/screens/NotifSettings';
 import EditProfile from './src/screens/EditProfile';
+import NotificationScreen from './src/screens/NotificationScreen';
 // You can add more screens like SearchScreen, UploadScreen if needed
 
 const Stack = createNativeStackNavigator();
@@ -110,6 +111,7 @@ export default function App() {
           <Stack.Screen name="MyAccount" component={MyAccount} />
           <Stack.Screen name="NotifSettings" component={NotifSettings} />
           <Stack.Screen name="EditProfile" component={EditProfile} />
+          <Stack.Screen name="Notifications" component={NotificationScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

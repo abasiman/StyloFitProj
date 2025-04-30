@@ -9,17 +9,18 @@ export default function UsersScreen() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.topContainer}>
-        <View style={styles.headerRow}>
-          <Text style={styles.profileTitle}>PROFILE</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-            <Icon name="settings-outline" size={24} color="#fff" />
-          </TouchableOpacity>
-        </View>
+      <View style={styles.headerRow}>
+      <Text style={styles.logo}>STYLoFiT</Text>
+      <Text style={styles.profileTitle}>PROFILE</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+        <Icon name="settings-outline" size={24} color="#fff" />
+      </TouchableOpacity>
+    </View>
         <View style={styles.profileImage} />
       </View>
 
       <View style={styles.userInfoContainer}>
-        <Text style={styles.userName}>Good Name</Text>
+        <Text style={styles.userName}>UserName</Text>
         <Text style={styles.userBio}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Blablabla
         </Text>
@@ -68,26 +69,38 @@ const styles = StyleSheet.create({
     backgroundColor: '#8C7661',
     paddingVertical: 20,
     paddingHorizontal: 20,
-    borderBottomLeftRadius: 50,
-    borderBottomRightRadius: 50,
   },
   headerRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    position: 'relative', // make sure children can be absolutely positioned
   },
+  logo: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '700',
+    fontFamily: 'System', // or remove this line to use default
+  },
+  
   profileTitle: {
     color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 15,
+    fontWeight: '500',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    textAlign: 'center',
   },
+  
   profileImage: {
-    width: 100,
-    height: 100,
+    width: 120,
+    height: 120,
     backgroundColor: '#ccc',
-    borderRadius: 50,
+    borderRadius: 60,
     alignSelf: 'center',
-    marginTop: 10,
+    marginTop: 20,
+    marginBottom: 20,
   },
   userInfoContainer: {
     alignItems: 'center',

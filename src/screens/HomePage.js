@@ -20,7 +20,7 @@ export default function HomePage({ navigation, route }) {
       {/* Top Header */}
       <View style={styles.header}>
         <Text style={styles.logo}>STYLoFiT</Text>
-        <FontAwesome name="bell" size={24} color="white" />
+        <FontAwesome name="bell" size={24} color="white" onPress={() => navigation.navigate('Notifications')} />
       </View>
 
       <ScrollView contentContainerStyle={styles.feed}>
@@ -103,8 +103,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
   },
   logo: {
     fontSize: 24,

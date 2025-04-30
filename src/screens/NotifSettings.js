@@ -21,14 +21,9 @@ export default function NotifSettings() {
     <View style={styles.container}>
       {/* Custom Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back" size={24} color="#fff" />
-        </TouchableOpacity>
         <Text style={styles.headerTitle}>Notifications</Text>
         <View style={{ width: 24 }} /> {/* to balance back icon */}
       </View>
-
-      <Text style={styles.sectionTitle}>Notifications</Text>
 
       <View style={styles.box}>
         {['likes', 'comments', 'followers', 'mentions', 'new post'].map((type, index) => (
@@ -50,8 +45,6 @@ export default function NotifSettings() {
         ))}
       </View>
 
-      {/* Bottom curve design */}
-      <View style={styles.bottomCurve} />
     </View>
   );
 }
@@ -59,7 +52,7 @@ export default function NotifSettings() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#8A6E52', // brown background
+    backgroundColor: '#7F6952', // brown background
     padding: 20,
     justifyContent: 'flex-start',
   },
@@ -88,6 +81,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 2 },
+    marginTop: 20, // <-- Add this line
   },
   row: {
     flexDirection: 'row',
@@ -99,14 +93,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     color: '#3B3B3B',
-  },
-  bottomCurve: {
-    position: 'absolute',
-    bottom: 0,
-    height: 100,
-    width: '100%',
-    backgroundColor: '#fff',
-    borderTopLeftRadius: 100,
-    borderTopRightRadius: 100,
   },
 });
