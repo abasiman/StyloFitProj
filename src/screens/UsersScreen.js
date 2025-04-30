@@ -36,14 +36,18 @@ export default function UsersScreen() {
           <Text style={styles.statNumber}>29</Text>
           <Text style={styles.statLabel}>outfits</Text>
         </View>
-        <View style={styles.stat}>
-          <Text style={styles.statNumber}>15,7k</Text>
-          <Text style={styles.statLabel}>followers</Text>
-        </View>
-        <View style={styles.stat}>
-          <Text style={styles.statNumber}>298</Text>
-          <Text style={styles.statLabel}>following</Text>
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('FollowingNFollowers', { type: 'followers' })}>
+          <View style={styles.stat}>
+            <Text style={styles.statNumber}>15,7k</Text>
+            <Text style={styles.statLabel}>followers</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('FollowingNFollowers', { type: 'following' })}>
+          <View style={styles.stat}>
+            <Text style={styles.statNumber}>298</Text>
+            <Text style={styles.statLabel}>following</Text>
+          </View>
+        </TouchableOpacity>
         <View style={styles.stat}>
           <Text style={styles.statNumber}>30,2M</Text>
           <Text style={styles.statLabel}>likes</Text>

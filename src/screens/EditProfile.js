@@ -80,8 +80,6 @@ const styles = StyleSheet.create({
     width: width,
     height: 200,
     backgroundColor: '#8C7661',
-    borderBottomLeftRadius: 120,
-    borderBottomRightRadius: 120,
     zIndex: -1,
   },
   title: {
