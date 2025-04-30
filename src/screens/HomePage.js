@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function HomePage({ navigation }) {
+export default function HomePage({ navigation, route }) {
   const [activeTab, setActiveTab] = useState('Home');
+  const showHeader = !(route?.params?.hideHeader);
 
   const handleTabPress = (tabName) => {
     setActiveTab(tabName);
@@ -12,7 +13,7 @@ export default function HomePage({ navigation }) {
     navigation.navigate('UsersScreen');
   };
 
-  const getIconColor = (tabName) => (activeTab === tabName ? 'black' : 'grey');
+//   const getIconColor = (tabName) => (activeTab === tabName ? 'black' : 'grey');
 
   return (
     <View style={styles.container}>

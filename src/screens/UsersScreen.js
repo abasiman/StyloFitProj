@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -60,22 +59,10 @@ export default function UsersScreen() {
         ))}
       </View>
     </ScrollView>
-=======
-// src/screens/UserScreen.js
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
-export default function UsersScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>This is the User Screen</Text>
-    </View>
->>>>>>> bedf6dd44ec33c106f281066201ecb14f0f2b237
   );
 }
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
   container: { backgroundColor: '#fff' },
   topContainer: {
     backgroundColor: '#8C7661',
@@ -176,15 +163,5 @@ const styles = StyleSheet.create({
   },
   outfitText: {
     color: '#888',
-=======
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
->>>>>>> bedf6dd44ec33c106f281066201ecb14f0f2b237
   },
 });
