@@ -19,6 +19,7 @@ import NotifSettings from './src/screens/NotifSettings';
 import EditProfile from './src/screens/EditProfile';
 import NotificationScreen from './src/screens/NotificationScreen';
 import FollowingNFollowers from './src/screens/FollowingNFollowers'; // Add this import
+import { PostsProvider } from './src/contexts/PostsContext';
 // You can add more screens like SearchScreen, UploadScreen if needed
 
 const Stack = createNativeStackNavigator();
@@ -94,6 +95,7 @@ function PlaceholderScreen() {
 export default function App() {
   return (
     <SafeAreaProvider>
+      <PostsProvider>
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Welcome"
@@ -116,6 +118,8 @@ export default function App() {
           <Stack.Screen name="FollowingNFollowers" component={FollowingNFollowers} />
         </Stack.Navigator>
       </NavigationContainer>
+      </PostsProvider>
+      
     </SafeAreaProvider>
   );
 }

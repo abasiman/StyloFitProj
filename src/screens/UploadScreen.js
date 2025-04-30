@@ -16,7 +16,7 @@ import {
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
+import { usePosts } from '../contexts/PostsContext';
 const { width } = Dimensions.get('window');
 
 export default function UploadScreen({ navigation }) {
@@ -38,6 +38,9 @@ export default function UploadScreen({ navigation }) {
   const [size, setSize] = useState('M');
   const [note, setNote] = useState('');
   const [editingTagIndex, setEditingTagIndex] = useState(-1);
+  const [uploading, setUploading] = useState(false);
+  const { addPost } = usePosts();
+
   
   const imageRef = useRef(null);
 
@@ -190,18 +193,43 @@ export default function UploadScreen({ navigation }) {
   };
 
   const handleUpload = () => {
+    if (tags.length === 0) return;
+  
+    setUploading(true);
+  
+    setTimeout(() => {
+      const newPost = {
+        image,
+        caption,
+        tags,
+        likes: 0,
+      };
+  
+      addPost(newPost); // <-- we add to PostsContext here
+  
+      setUploading(false);
+  
+      navigation.navigate('Home'); // <-- go Home WITHOUT passing { newPost }
+      
+      // Reset form
+      setImage(null);
+      setTags([]);
+      setCaption('');
+    }, 2000);
+  };
+  
     // Here you would upload to Firestore
     // For now we'll just show an alert and navigate back
-    Alert.alert(
-      "Success",
-      "Your outfit has been uploaded!",
-      [
-        { 
-          text: "OK", 
-          onPress: () => navigation.navigate('Home')
-        }
-      ]
-    );
+    // Alert.alert(
+    //   "Success",
+    //   "Your outfit has been uploaded!",
+    //   [
+    //     { 
+    //       text: "OK", 
+    //       onPress: () => navigation.navigate('Home')
+    //     }
+    //   ]
+    // );
     
     // In a real implementation, you would save to Firestore:
     // const outfitData = {
@@ -215,7 +243,7 @@ export default function UploadScreen({ navigation }) {
     // firebase.firestore().collection('outfits').add(outfitData)
     //   .then(() => navigation.navigate('Home'))
     //   .catch(error => Alert.alert("Error", error.message));
-  };
+//   };
 
   const addNewBrand = () => {
     Alert.alert(
@@ -578,6 +606,7 @@ export default function UploadScreen({ navigation }) {
                   <Text style={styles.typeName}>{type.name}</Text>
                 </TouchableOpacity>
               ))}
+
             </ScrollView>
           </View>
         </View>

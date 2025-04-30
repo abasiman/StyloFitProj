@@ -1,17 +1,29 @@
 // src/screens/HomePage.js
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import PostCard from '../components/PostCard';
+import { usePosts } from '../contexts/PostsContext';
+
 
 export default function HomePage({ navigation, route }) {
   const [activeTab, setActiveTab] = useState('Home');
   const showHeader = !(route?.params?.hideHeader);
+//   const [posts, setPosts] = useState([]);
+  const { posts } = usePosts();
+
+  
+//   useEffect(() => {
+//     if (route.params?.newPost) {
+//       setPosts((prevPosts) => [route.params.newPost, ...prevPosts]);
+//     }
+//   }, [route.params?.newPost]);
 
   const handleTabPress = (tabName) => {
     setActiveTab(tabName);
     // Example navigation (You can replace this with your actual screens)
     navigation.navigate('UsersScreen');
-  };
+  };  
 
 //   const getIconColor = (tabName) => (activeTab === tabName ? 'black' : 'grey');
 
@@ -24,8 +36,23 @@ export default function HomePage({ navigation, route }) {
       </View>
 
       <ScrollView contentContainerStyle={styles.feed}>
+
+      {posts.length === 0 ? (
+    <Text>No posts yet. Upload an outfit!</Text>
+  ) : (
+    posts.map((post, index) => (
+      <PostCard key={index} post={post} index={index} />
+    ))
+  )}
+  
+      {/* {posts.length === 0 ? (
+          <Text>No posts yet. Upload an outfit!</Text>
+        ) : (
+          posts.map((post, index) => <PostCard key={index} post={post} />)
+        )} */}
+
         {/* Example Feed */}
-        <View style={styles.card}>
+        {/* <View style={styles.card}>
           <View style={styles.cardHeader}>
             <View style={styles.profilePic} />
             <Text style={styles.username}>@drake</Text>
@@ -47,7 +74,7 @@ export default function HomePage({ navigation, route }) {
           </View>
 
           <Text style={styles.caption}>caption bla bla bla... <Text style={styles.moreText}>more</Text></Text>
-        </View>
+        </View> */}
       </ScrollView>
 
       {/* Bottom Navbar */}
